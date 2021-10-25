@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Add Album</title>
+</head>
+<body>
+<h2>Add A New Album</h2>
+<form action="/addAlbum" method="POST">
+    <label for="title">Title:  <input type="text" name="title" id="title"> </label><br>
+    <label for="artist">Artist:  <input type="text" name="artist" id="artist"> </label><br>
+    <label for="songCount">Song Count:  <input type="number" name="songCount" id="songCount"> </label><br>
+    <label for="length">Length (in seconds):  <input type="number" name="length" id="length"> </label><br>
+    <label for="imageUrl">Image URL: <input type="text" name="imageUrl" id="imageUrl"> </label><br>
+    <input type="submit" value="Add Album">
+</form>
+</body>
+</html>

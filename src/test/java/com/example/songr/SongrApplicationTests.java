@@ -1,5 +1,6 @@
 package com.example.songr;
 
+import com.example.songr.Models.Album;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -26,6 +27,7 @@ class SongrApplicationTests {
 		int expected = 9;
 		assertEquals(expected,output);
 	}
+
 
 
 }
