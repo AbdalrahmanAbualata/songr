@@ -1,4 +1,4 @@
-package com.example.songr;
+package com.example.songr.Models;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
