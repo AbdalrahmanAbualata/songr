@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Add Song</title>
+</head>
+
+<body>
+<h2>Add A New Song</h2>
+<h3> <span th:text=${album.id}></span></h3>
+<form  th:action="${'/addSongFinal/'+album.id}" method="POST">
+    <label for="title">Title:  <input type="text" name="title" id="title" required> </label><br>
+    <label for="length">Length (in seconds):  <input type="number" name="length" id="length" required> </label><br>
+<!--    <label for="trackNumber">track Number:  <input type="number" name="trackNumber" id="trackNumber"> </label><br>-->
+<!--    <label for="albumId">album Id: <input type="number" name="albumId" id="albumId"value=${album.id} required> </label><br>-->
+    <input type="submit" value="Add Album">
+</form>
+</body>
+</html>

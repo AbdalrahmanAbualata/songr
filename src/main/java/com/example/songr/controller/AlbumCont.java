@@ -6,11 +6,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.view.RedirectView;
 
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Controller
@@ -32,6 +34,7 @@ public class AlbumCont {
 //
 //        return "albums";
 //    }
+
 //    http://localhost:8080/testAddAlbums
     @GetMapping("/testAddAlbums")
     public RedirectView saveAlbums(Model model){
@@ -39,9 +42,10 @@ public class AlbumCont {
         albumRepository.save(album1);
         return new RedirectView("/albums");
     }
+
 //    http://localhost:8080/albums
     @GetMapping("/albums")
-    public String getThreeAlbums(Model model){
+    public String getThreeAlbums(Model model,Model model2){
         List<Album> albums = (List<Album>) albumRepository.findAll();
         model.addAttribute("albums",albums);
         return "albums";
@@ -50,6 +54,7 @@ public class AlbumCont {
     public String viewAddAlbumForm(){
         return "addAlbum";
     }
+
 
     @PostMapping("/addAlbum")
     public RedirectView addAlbumToDB(Model model,
@@ -61,5 +66,23 @@ public class AlbumCont {
         Album album = new Album(title,artist,songCount,length,imageUrl);
         albumRepository.save(album);
         return new RedirectView("/albums");
+    }
+
+
+//    http://localhost:8080/oneAlbums/{1}
+    @GetMapping("/oneAlbums/{id}")
+    public String getSpecificAlbums(Model m ,@PathVariable long id){
+        try{
+            Album album =  albumRepository.findById(id).get();
+            List<Album> albums = new ArrayList<>();
+            albums.add(album);
+            m.addAttribute("albums",albums);
+            return "albums";
+        }
+        catch (Exception e){
+            String error = "Album ID is Not found..!";
+            m.addAttribute("errorMessage",error);
+            return "error";
+        }
     }
 }
