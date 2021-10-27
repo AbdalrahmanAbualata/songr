@@ -5,20 +5,36 @@
     <meta charset="UTF-8">
     <title>Title</title>
     <style>
-        h2{text-align: center; font-size:2.5em; }
+        h3{font-size:2.5em;f}
+        h2{text-align: center; font-size:3.5em; }
         p{font-weight:bold;}
         span{color:maroon;font-weight:normal;}
     </style>
 </head>
 <body>
-<h2>Top Three Albums:</h2>
+<h2>Top  Albums:</h2>
+<h3><a href="/addAlbum">Add new album </a></h3>
+<!--<h3><a href="/addSong">Add new song</a></h3>-->
 <div th:each="album : ${albums}">
+    <p>ID: <span th:text=${album.id}></span></p>
     <p>Title: <span th:text=${album.title}></span></p>
     <p>Artist: <span th:text="${album.artist}"></span></p>
     <p>Song Count: <span th:text="${album.songCount}"></span></p>
     <p>Length: <span th:text="${album.length}"></span></p>
-    <!--    <p>Image url: <span th:text="${album.imageUrl}"></span></p>-->
     <a th:href=@{${album.imageUrl}}>Image url</a>
+    <form th:action="${'/addSong/'+album.id}" methods="GET">
+        <label>add song for the album:<input type="submit" value="Add song"></label><br>
+    </form>
+    <form th:action="${'/oneAlbums/'+album.id}" methods="GET">
+        <label>show this album:<input type="submit" value="show Album"></label><br>
+    </form>
+    <p>Songs in Album : </p>
+    <ul style="display:inline-block" th:each="song : ${album.songs}">
+        <li>Song ID: <span th:text=${song.id}></span></li>
+        <li>Song Title: <span th:text=${song.title}></span></li>
+        <li>Song Length: <span th:text=${song.length}></span></li>
+        <li>Track Number: <span th:text=${song.trackNumber}></span></li>
+    </ul>
     <hr>
 </div>
 </body>

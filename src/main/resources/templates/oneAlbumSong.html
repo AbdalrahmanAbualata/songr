@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        h2{
+        text-align: center;
+        font-size:2.5em;
+        }
+        p{
+        font-weight:bold;}
+        span{
+        color:maroon;
+        font-weight:normal;
+        }
+    </style>
+</head>
+<body>
+<h2>All Songs for Album:<span th:text=${song.album.title}></span></h2>
+<p>back to home page</p>
+<a href="/">Home page</a>
+<div th:each="song : ${songs}">
+    <p>Song ID: <span th:text=${song.id}></span></p>
+    <p>Song Title: <span th:text=${song.title}></span></p>
+    <p>Song Length: <span th:text="${song.length}"></span></p>
+    <p>Song Track Number: <span th:text="${song.trackNumber}"></span></p>
+    <hr>
+</div>
+</body>
+</html>
